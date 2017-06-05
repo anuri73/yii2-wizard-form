@@ -1,0 +1,30 @@
+{
+  "name": "sonkei/yii2-wizard-form",
+  "description": "Yii2 wizard form widget with slick slider",
+  "keywords": [
+    "yii2",
+    "wizard",
+    "form",
+    "slick",
+    "widget",
+    "slider"
+  ],
+  "type": "yii2-extension",
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/anuri73/wizard-form/issues",
+    "source": "https://github.com/anuri73/wizard-form"
+  },
+  "authors": [
+    {
+      "name": "Urmat Zhenaliev",
+      "email": "sonkei@ya.ru"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "sonkei\\wzard\\": "dist"
+    }
+  }
+}
