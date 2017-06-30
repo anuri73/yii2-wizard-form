@@ -44,11 +44,22 @@ class Widget extends BaseWidget {
 	function run() {
 		$this->registerAssets();
 
-		return $this->renderNavigation( ArrayHelper::getValue( $this->options, 'label', [] ) );
+		return implode( array_filter( [
+			$this->renderNavigation( ArrayHelper::getValue( $this->options, 'label', [] ) ),
+			$this->renderPanes(),
+		] ) );
 	}
 	#endregion
 
 	#region Protected methods
+	/**
+	 * Render tab panes
+	 * @return string
+	 */
+	protected function renderPanes() {
+		return implode( array_filter( ArrayHelper::getColumn( $this->items, 'item' ) ) );
+	}
+
 	/**
 	 * Render navigation bar
 	 *
