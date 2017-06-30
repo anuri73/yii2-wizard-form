@@ -18,11 +18,21 @@ class Widget extends YiiWidget {
 	#region Core
 	/** @inheritdoc */
 	function run() {
+		$this->registerAssets();
+
 		return $this->renderCore();
 	}
 	#endregion
 
 	#region Protected methods
+	/**
+	 * Register assets
+	 * @return Asset
+	 */
+	protected function registerAssets() {
+		return Asset::register( $this->view );
+	}
+
 	protected function renderCore() {
 		return "Core";
 	}
