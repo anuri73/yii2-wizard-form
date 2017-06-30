@@ -30,7 +30,12 @@ class Widget extends BaseWidget {
 	 * @var array $default_options
 	 */
 	protected $default_options = [
-		'encode' => false
+		'encode'      => false,
+		'class'       => 'nav nav-tabs',
+		'role'        => 'tablist',
+		'itemOptions' => [
+			'role' => 'presentation'
+		],
 	];
 	#endregion
 
