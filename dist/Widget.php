@@ -57,9 +57,17 @@ class Widget extends BaseWidget {
 	 * @return string
 	 */
 	protected function renderPanes() {
+		$items = ArrayHelper::getColumn( $this->items, 'item' );
+
 		return Html::tag(
 			'div',
-			implode( array_filter( ArrayHelper::getColumn( $this->items, 'item' ) ) ), [
+			implode( array_filter( array_map( function ( $item, $index ) {
+				return Html::tag( 'div', $item, [
+					'class' => 'tab-pane',
+					'role'  => 'tabpanel',
+					'id'    => $this->getPaneId( $index )
+				] );
+			}, $items, array_keys( $items ) ) ) ), [
 			'class' => 'tab-content'
 		] );
 	}
