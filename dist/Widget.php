@@ -23,6 +23,11 @@ class Widget extends BaseWidget {
 	 * @var array $items
 	 */
 	public $items = [];
+	/**
+	 * Active index
+	 * @var int $active_index
+	 */
+	public $active_index = 0;
 	#endregion
 
 	#region Protected methods
@@ -63,7 +68,10 @@ class Widget extends BaseWidget {
 			'div',
 			implode( array_filter( array_map( function ( $item, $index ) {
 				return Html::tag( 'div', $item, [
-					'class' => 'tab-pane',
+					'class' => implode( array_filter( [
+						'tab-pane',
+						$this->active_index == $index ? 'active' : false,
+					] ) ),
 					'role'  => 'tabpanel',
 					'id'    => $this->getPaneId( $index )
 				] );
