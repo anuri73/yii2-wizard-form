@@ -16,7 +16,7 @@ use yii\web\AssetBundle;
  */
 class Asset extends AssetBundle {
 	/** @inheritdoc */
-	public $css = [];
+	public $css = [ 'css/style.css' ];
 	/** @inheritdoc */
 	public $js = [];
 	/** @inheritdoc */

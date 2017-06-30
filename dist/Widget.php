@@ -72,13 +72,20 @@ class Widget extends BaseWidget {
 	 * @return string
 	 */
 	protected function renderNavigation( array $options = [] ) {
+
+		if ( ! array_key_exists( 'item', $options ) ) {
+			$options['item'] = function ( $item, $index ) {
+				return $this->renderNavigationItem( $item, $index );
+			};
+		}
+
 		return Html::tag(
 			'div',
 			Html::ul(
 				ArrayHelper::getColumn( $this->items, 'label' ),
 				ArrayHelper::merge( $this->default_options, $options )
 			),
-			[ 'class' => 'wizard-inner' ]
+			[ 'class' => 'wizard-inner', ]
 		);
 	}
 
@@ -88,6 +95,42 @@ class Widget extends BaseWidget {
 	 */
 	protected function registerAssets() {
 		return Asset::register( $this->view );
+	}
+
+	/**
+	 * Render navigation item
+	 *
+	 * @param mixed $item
+	 * @param int $index
+	 *
+	 * @return string
+	 */
+	protected function renderNavigationItem( $item, $index ) {
+		return Html::tag(
+			'li',
+			Html::a(
+				$item,
+				"#{$this->getPaneId($index)}",
+				[
+					'data'          => [ 'toggle' => 'tab' ],
+					'aria-controls' => $this->getPaneId( $index ),
+					'role'          => 'tab',
+					'title'         => strip_tags( $item )
+				]
+			),
+			ArrayHelper::getValue( $this->options, 'itemOptions', [] )
+		);
+	}
+
+	/**
+	 * Get pane id by the index
+	 *
+	 * @param mixed $index
+	 *
+	 * @return mixed string
+	 */
+	protected function getPaneId( $index ) {
+		return "{$this->id}-pane-{$index}";
 	}
 	#endregion
 }
