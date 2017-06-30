@@ -6,14 +6,25 @@
  * Time: 8:21
  */
 
-namespace sonkei\wzard\dist;
+namespace anuri73\wzard;
 
 use yii\base\Widget as YiiWidget;
 
 /**
  * Class Widget
- * @package sonkei\wzard\dist
+ * @package anuri73\wzard
  */
 class Widget extends YiiWidget {
+	#region Core
+	/** @inheritdoc */
+	function run() {
+		return $this->renderCore();
+	}
+	#endregion
 
+	#region Protected methods
+	protected function renderCore() {
+		return "Core";
+	}
+	#endregion
 }

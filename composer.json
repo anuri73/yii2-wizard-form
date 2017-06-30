@@ -1,5 +1,5 @@
 {
-  "name": "sonkei/yii2-wizard-form",
+  "name": "anuri73/yii2-wizard-form",
   "description": "Yii2 wizard form widget with slick slider",
   "keywords": [
     "yii2",
@@ -7,7 +7,9 @@
     "form",
     "slick",
     "widget",
-    "slider"
+    "slider",
+    "ui",
+    "tabs"
   ],
   "type": "yii2-extension",
   "license": "BSD-3-Clause",
@@ -21,10 +23,13 @@
       "email": "sonkei@ya.ru"
     }
   ],
-  "require": {},
+  "require": {
+    "yiisoft/yii2": ">=2.0.5",
+    "yiisoft/yii2-bootstrap": "~2.0.0"
+  },
   "autoload": {
     "psr-4": {
-      "sonkei\\wzard\\": "dist"
+      "anuri73\\wzard\\": "dist"
     }
   }
 }
