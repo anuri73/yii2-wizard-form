@@ -44,10 +44,10 @@ class Widget extends BaseWidget {
 	function run() {
 		$this->registerAssets();
 
-		return implode( array_filter( [
+		return Html::tag( 'div', implode( array_filter( [
 			$this->renderNavigation( ArrayHelper::getValue( $this->options, 'label', [] ) ),
 			$this->renderPanes(),
-		] ) );
+		] ) ), [ 'class' => 'wizard' ] );
 	}
 	#endregion
 
@@ -57,7 +57,11 @@ class Widget extends BaseWidget {
 	 * @return string
 	 */
 	protected function renderPanes() {
-		return implode( array_filter( ArrayHelper::getColumn( $this->items, 'item' ) ) );
+		return Html::tag(
+			'div',
+			implode( array_filter( ArrayHelper::getColumn( $this->items, 'item' ) ) ), [
+			'class' => 'tab-content'
+		] );
 	}
 
 	/**
@@ -68,9 +72,13 @@ class Widget extends BaseWidget {
 	 * @return string
 	 */
 	protected function renderNavigation( array $options = [] ) {
-		return Html::ul(
-			ArrayHelper::getColumn( $this->items, 'label' ),
-			ArrayHelper::merge( $this->default_options, $options )
+		return Html::tag(
+			'div',
+			Html::ul(
+				ArrayHelper::getColumn( $this->items, 'label' ),
+				ArrayHelper::merge( $this->default_options, $options )
+			),
+			[ 'class' => 'wizard-inner' ]
 		);
 	}
 
