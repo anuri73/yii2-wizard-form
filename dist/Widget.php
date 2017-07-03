@@ -68,7 +68,7 @@ class Widget extends BaseWidget {
 			'div',
 			implode( array_filter( array_map( function ( $item, $index ) {
 				return Html::tag( 'div', $item, [
-					'class' => implode( array_filter( [
+					'class' => implode( " ", array_filter( [
 						'tab-pane',
 						$this->active_index == $index ? 'active' : false,
 					] ) ),
@@ -122,6 +122,13 @@ class Widget extends BaseWidget {
 	 * @return string
 	 */
 	protected function renderNavigationItem( $item, $index ) {
+
+		$options = ArrayHelper::getValue( $this->options, 'itemOptions', [] );
+
+		if ( $index == $this->active_index ) {
+			Html::addCssClass( $options, 'active' );
+		}
+
 		return Html::tag(
 			'li',
 			Html::a(
@@ -134,7 +141,7 @@ class Widget extends BaseWidget {
 					'title'         => strip_tags( $item )
 				]
 			),
-			ArrayHelper::getValue( $this->options, 'itemOptions', [] )
+			$options
 		);
 	}
 
