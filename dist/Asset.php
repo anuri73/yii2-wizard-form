@@ -16,10 +16,6 @@ use yii\web\AssetBundle;
  */
 class Asset extends AssetBundle {
 	/** @inheritdoc */
-	public $css = [ 'css/style.css' ];
-	/** @inheritdoc */
-	public $js = [];
-	/** @inheritdoc */
 	public $sourcePath = "@anuri73/wzard/assets";
 	/** @inheritdoc */
 	public $depends = [
